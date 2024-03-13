@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  Threeam\ThreeamContentElementsPage\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+  Threeam\ThreeamContentElementsPage\Command\BuildContentElementsPage:
+    tags:
+      -
+        name: console.command
+        command: 'cepage:build'
+        description: 'TYPO3 extension that simplifies the process by automatically generating a dedicated page containing all unique content elements present across your site.'
+        schedulable: true

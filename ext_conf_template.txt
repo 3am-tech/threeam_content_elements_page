@@ -1,0 +1,2 @@
+	# cat=basic; type=int+; label=Target Content Elements page id where you want to place all content elements.
+cePageId = 0
