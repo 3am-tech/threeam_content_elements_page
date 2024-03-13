@@ -44,6 +44,9 @@ Setup page id in extension configuration to the id where you want to place all c
 ## Usage
 Create a scheduler of type console command  for `cepage:build` or you can execute from cli with `cepage:build`
 
+## How to skip content elements
+if some content elements are copied automatically but you don't want them on the content elements page. You can simply disable them on the page so copy process will not copy them again on the page.
+
 ## Credits
 
 This extension is created by [3AM Technolgies](https://3am-tech.com).
