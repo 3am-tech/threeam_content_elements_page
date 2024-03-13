@@ -3,9 +3,10 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Content Elements Page',
     'description' => 'Are you tired of manually creating content elements pages on your TYPO3 website? Introducing our innovative TYPO3 extension that simplifies the process by automatically generating a dedicated page containing all unique content elements present across your site.',
-    'category' => 'plugin',
+    'category' => 'misc',
     'author' => 'Mohsin Khan',
     'author_email' => 'mohsin@3am-tech.com',
+    'author_company' => '3AM Technologies',
     'state' => 'beta',
     'clearCacheOnLoad' => 0,
     'version' => '1.0.0',
@@ -15,5 +16,10 @@ $EM_CONF[$_EXTKEY] = [
         ],
         'conflicts' => [],
         'suggests' => [],
+    ],
+    'autoload' => [
+        'psr-4' => [
+            'Threeam\\ThreeamContentElementsPage\\' => 'Classes/',
+        ],
     ],
 ];
