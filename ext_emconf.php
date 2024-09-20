@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Content Elements Page',
+    'title' => '[ThreeAM] Content Elements Page',
     'description' => 'Are you tired of manually creating content elements pages on your TYPO3 website? Introducing our innovative TYPO3 extension that simplifies the process by automatically generating a dedicated page containing all unique content elements present across your site.',
     'category' => 'misc',
     'author' => 'Mohsin Khan',
