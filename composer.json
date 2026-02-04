@@ -11,32 +11,15 @@
     ],
     "license": "GPL-2.0-or-later",
     "require": {
-        "typo3/cms-core": "^11.5"
-    },
-    "require-dev": {
-        "typo3/testing-framework": "^6.9.0"
+        "typo3/cms-core": "^14.1"
     },
     "autoload": {
         "psr-4": {
             "Threeam\\ThreeamContentElementsPage\\": "Classes"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Threeam\\ThreeamContentElementsPage\\Tests\\": "Tests"
-        }
-    },
     "replace": {
         "typo3-ter/threeam-content-elements-page": "self.version"
-    },
-    "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
-        ]
     },
     "extra": {
         "typo3/cms": {

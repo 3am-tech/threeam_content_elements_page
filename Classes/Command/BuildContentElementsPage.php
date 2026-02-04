@@ -11,6 +11,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
+use Doctrine\DBAL\ParameterType;
 
 class BuildContentElementsPage extends Command
 {
@@ -22,7 +23,7 @@ class BuildContentElementsPage extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        
+
         $config = $extensionConfiguration->get('threeam_content_elements_page');
         if(!$config['cePageId']) {
             $output->writeln('Target Content Elements page id not set');
@@ -33,25 +34,23 @@ class BuildContentElementsPage extends Command
         $queryBuilder1->getRestrictions()
         ->removeByType(HiddenRestriction::class);
         $existingContentElements = $queryBuilder1
-            ->select('CType', 'list_type', 'layout', 'frame_class')
+            ->select('CType', 'layout', 'frame_class')
             ->from('tt_content')
             ->where(
-                    $queryBuilder1->expr()->eq('pid', $queryBuilder1->createNamedParameter($config['cePageId'], \PDO::PARAM_INT))
+                    $queryBuilder1->expr()->eq('pid', $queryBuilder1->createNamedParameter($config['cePageId'], ParameterType::INTEGER))
                 )
                 ->executeQuery()
                 ->fetchAllAssociative();
-            
+
         $queryBuilder2 = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
         $result = $queryBuilder2
-            ->resetQueryParts()
-            ->select('uid', 'CType', 'list_type', 'layout', 'frame_class')
+            ->select('uid', 'CType', 'layout', 'frame_class')
             ->from('tt_content')
             ->groupBy('CType')
-            ->addGroupBy('list_type')
             ->addGroupBy('layout')
             ->addGroupBy('frame_class')
             ->orderBy('tstamp', 'DESC')
-            ->execute();
+            ->executeQuery();
 
         // Retrieve the unique content elements
         $cmd = [];
